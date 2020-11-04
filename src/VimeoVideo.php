@@ -9,7 +9,7 @@ class VimeoVideo extends Video implements VideoContract
 {
     public function embed() : String
     {
-        return "<iframe {$this->renderClass()} src=\"{$this->embedUrl()}?autoplay={$this->autoplay}\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
+        return "<iframe {$this->renderClass()} src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
     }
 
     public function embedUrl() : String

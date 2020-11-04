@@ -12,7 +12,7 @@ abstract class Video
     private $autoplay;
     private $reference;
 
-    public static function from(String $url) : mixed
+    public static function from(String $url)
     {
         if (preg_match('%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im', $url, $matches)) {
             return new YoutubeVideo($matches[5]);
@@ -59,8 +59,13 @@ abstract class Video
         return $this->reference;
     }
 
-    private function renderClass() : String
+    protected function renderClass() : String
     {
         return ($this->class) ? "class=\"{$this->class}\"" : "";
+    }
+
+    protected function getAutoplay() : String
+    {
+        return $this->autoplay == true ? '1' : '0';
     }
 }

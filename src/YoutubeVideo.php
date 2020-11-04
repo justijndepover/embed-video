@@ -9,7 +9,7 @@ class YoutubeVideo extends Video implements VideoContract
 {
     public function embed() : String
     {
-        return "<iframe {$this->renderClass()} type=\"text/html\" src=\"{$this->embedUrl()}?autoplay={$this->autoplay}&rel=0\" frameborder=\"0\"></iframe>";
+        return "<iframe {$this->renderClass()} type=\"text/html\" src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}&rel=0\" frameborder=\"0\"></iframe>";
     }
 
     public function embedUrl() : String
