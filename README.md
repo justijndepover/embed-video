@@ -11,8 +11,12 @@ composer require justijndepover/embed-video
 
 ## Usage
 ```php
+use Justijndepover\EmbedVideo\Video;
+
 $video = new Video('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 ```
+
+If you provide the constructor with a faulty link, a `Justijndepover\EmbedVideo\VideoException` will be thrown.
 
 ### Embed
 ```php
@@ -23,21 +27,21 @@ This will generate the embedded iframe for either Youtube or Vimeo.
 
 ### Embed url
 ```php
-$html = $video->embedUrl();
+$url = $video->embedUrl();
 ```
 
 This will generate the embedded url used in the iframe for either Youtube or Vimeo.
 
 ### Thumbnail
 ```php
-$html = $video->thumbnail();
+$thumbnail = $video->thumbnail();
 ```
 
 This will generate a thumbnail url for the cover image;
 
 ### Reference
 ```php
-$html = $video->reference();
+$reference = $video->reference();
 ```
 
 This will return the video reference;
