@@ -1,0 +1,20 @@
+{
+    "name": "justijndepover/embed-video",
+    "description": "Extract the embed url from Youtube and Vimeo videos",
+    "keywords": ["youtube", "vimeo", "video", "embed", "php", "justijndepover"],
+    "homepage": "https://github.com/justijndepover/embed-video",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justijn Depover",
+            "email": "justijndepover@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Justijndepover\\EmbedVideo\\": "src/"
+        }
+    },
+    "require": {}
+}
