@@ -104,7 +104,7 @@ class Video
 
     private function renderVimeoPlayerUrl() : String
     {
-        return "http://player.vimeo.com/video/{$this->getVimeoReference()}";
+        return "https://player.vimeo.com/video/{$this->getVimeoReference()}";
     }
 
     private function renderVimeoThumbnailUrl() : String
@@ -125,7 +125,7 @@ class Video
 
     private function renderYoutubePlayerUrl() : String
     {
-        return "http://www.youtube.com/embed/{$this->getYoutubeReference()}";
+        return "https://www.youtube.com/embed/{$this->getYoutubeReference()}";
     }
 
     private function renderYoutubeThumbnailUrl() : String
