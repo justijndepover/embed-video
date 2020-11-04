@@ -13,10 +13,10 @@ composer require justijndepover/embed-video
 ```php
 use Justijndepover\EmbedVideo\Video;
 
-$video = new Video('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$video = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 ```
 
-If you provide the constructor with a faulty link, a `Justijndepover\EmbedVideo\VideoException` will be thrown.
+If you provide the class with a faulty link, a `Justijndepover\EmbedVideo\VideoException` will be thrown.
 
 ### Embed
 ```php
