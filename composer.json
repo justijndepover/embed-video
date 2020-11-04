@@ -16,5 +16,16 @@
             "Justijndepover\\EmbedVideo\\": "src/"
         }
     },
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "Justijndepover\\EmbedVideo\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.4"
+    }
 }
