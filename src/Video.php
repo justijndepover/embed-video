@@ -87,12 +87,12 @@ class Video
         return $this;
     }
 
-    public function isYoutube() : \Boolean
+    public function isYoutube() : bool
     {
         return $this->isYoutube;
     }
 
-    public function isVimeo() : \Boolean
+    public function isVimeo() : bool
     {
         return $this->isVimeo;
     }
