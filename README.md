@@ -1,6 +1,8 @@
 # Embed Video
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/justijndepover/embed-video.svg?style=flat-square)](https://packagist.org/packages/justijndepover/embed-video)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://img.shields.io/github/workflow/status/justijndepover/embed-video/Tests?style=flat-square)](https://github.com/justijndepover/embed-video/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/justijndepover/embed-video.svg?style=flat-square)](https://packagist.org/packages/justijndepover/embed-video)
 
 ## Installation
