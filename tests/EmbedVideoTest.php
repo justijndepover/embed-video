@@ -9,6 +9,28 @@ use PHPUnit\Framework\TestCase;
 class EmbedVideoTest extends TestCase
 {
     /** @test */
+    public function it_can_validate()
+    {
+        $validated = Video::validate('random_string');
+        $this->assertFalse($validated);
+
+        $validated = Video::validate('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validate('https://www.youtube.com/embed/dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validate('https://youtu.be/dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validate('https://vimeo.com/452638847');
+        $this->assertTrue($validated);
+
+        $validated = Video::validate('https://player.vimeo.com/video/452638847');
+        $this->assertTrue($validated);
+    }
+
+    /** @test */
     public function it_throws_an_error_on_wrong_input_url()
     {
         $this->expectException(VideoException::class);
