@@ -43,41 +43,41 @@ abstract class Video
         $this->reference = $reference;
     }
 
-    public function isYoutube() : bool
+    public function isYoutube(): bool
     {
         return false;
     }
 
-    public function isVimeo() : bool
+    public function isVimeo(): bool
     {
         return false;
     }
 
-    public function autoplay() : self
+    public function autoplay(): self
     {
         $this->autoplay = true;
 
         return $this;
     }
 
-    public function class(String $class) : self
+    public function class(String $class): self
     {
         $this->class = $class;
 
         return $this;
     }
 
-    public function reference() : String
+    public function reference(): String
     {
         return $this->reference;
     }
 
-    protected function renderClass() : String
+    protected function renderClass(): String
     {
         return ($this->class) ? "class=\"{$this->class}\"" : "";
     }
 
-    protected function getAutoplay() : String
+    protected function getAutoplay(): String
     {
         return $this->autoplay == true ? '1' : '0';
     }
