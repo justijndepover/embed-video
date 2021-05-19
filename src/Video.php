@@ -54,7 +54,8 @@ abstract class Video
         return false;
     }
 
-    public function autoplay(): self
+    // return type is gone here, because of weird php 7.1 - 7.3 bug
+    public function autoplay()
     {
         $this->autoplay = true;
 
