@@ -11,8 +11,9 @@ abstract class Video
     protected $class;
     protected $autoplay;
     protected $reference;
+    protected $attributes = [];
 
-    public static function validate(String $url)
+    public static function validate(string $url)
     {
         if (preg_match('%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im', $url, $matches)) {
             return true;
@@ -25,7 +26,7 @@ abstract class Video
         return false;
     }
 
-    public static function from(String $url)
+    public static function from(string $url)
     {
         if (preg_match('%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im', $url, $matches)) {
             return new YoutubeVideo($matches[5]);
@@ -60,25 +61,47 @@ abstract class Video
         return $this;
     }
 
-    public function class(String $class): self
+    public function class(string $class): self
     {
         $this->class = $class;
 
         return $this;
     }
 
-    public function reference(): String
+    public function addAttribute(string $key, string $value): self
+    {
+        if (isset($this->attributes[$key])) {
+            $this->attributes[$key] = $this->attributes[$key] . ' ' . $value;
+        } else {
+            $this->attributes[$key] = $value;
+        }
+
+        return $this;
+    }
+
+    public function reference(): string
     {
         return $this->reference;
     }
 
-    protected function renderClass(): String
+    protected function renderClass(): string
     {
         return ($this->class) ? "class=\"{$this->class}\"" : "";
     }
 
-    protected function getAutoplay(): String
+    protected function getAutoplay(): string
     {
         return $this->autoplay == true ? '1' : '0';
+    }
+
+    protected function getAttributes(): string
+    {
+        $return = '';
+
+        foreach ($this->attributes as $key => $value) {
+            $return .= $key . '="' . $value . '" ';
+        }
+
+        return rtrim($return);
     }
 }
