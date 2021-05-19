@@ -36,4 +36,9 @@ class VimeoVideo extends Video implements VideoContract
 
         return $this;
     }
+
+    protected function getAutoplay(): string
+    {
+        return $this->autoplay == true ? 'true' : 'false';
+    }
 }
