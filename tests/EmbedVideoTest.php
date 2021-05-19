@@ -107,10 +107,10 @@ class EmbedVideoTest extends TestCase
     {
         $iframe = Video::from('https://vimeo.com/452638847')->autoplay()->embed();
 
-        $this->assertStringContainsString('autoplay=1', $iframe);
+        $this->assertStringContainsString('autoplay=true', $iframe);
 
         $iframe = Video::from('https://vimeo.com/452638847')->embed();
 
-        $this->assertStringContainsString('autoplay=0', $iframe);
+        $this->assertStringContainsString('autoplay=false', $iframe);
     }
 }

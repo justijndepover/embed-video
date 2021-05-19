@@ -8,9 +8,9 @@ use Justijndepover\EmbedVideo\YoutubeVideo;
 
 abstract class Video
 {
-    private $class;
-    private $autoplay;
-    private $reference;
+    protected $class;
+    protected $autoplay;
+    protected $reference;
 
     public static function validate(String $url)
     {
