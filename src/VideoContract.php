@@ -4,9 +4,9 @@ namespace Justijndepover\EmbedVideo;
 
 interface VideoContract
 {
-    public function embed(): String;
+    public function embed(): string;
 
-    public function embedUrl(): String;
+    public function embedUrl(): string;
 
-    public function thumbnail(): String;
+    public function thumbnail(): string;
 }
