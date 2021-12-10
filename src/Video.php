@@ -15,11 +15,29 @@ abstract class Video
 
     public static function validate(string $url)
     {
-        if (preg_match('%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im', $url, $matches)) {
+        if (preg_match(YoutubeVideo::$regex, $url, $matches)) {
             return true;
         }
 
-        if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\#?)(?:[?]?.*)$%im', $url, $matches)) {
+        if (preg_match(VimeoVideo::$regex, $url, $matches)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function validateYoutube(string $url)
+    {
+        if (preg_match(YoutubeVideo::$regex, $url, $matches)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function validateVimeo(string $url)
+    {
+        if (preg_match(VimeoVideo::$regex, $url, $matches)) {
             return true;
         }
 
@@ -28,11 +46,11 @@ abstract class Video
 
     public static function from(string $url)
     {
-        if (preg_match('%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im', $url, $matches)) {
+        if (preg_match(YoutubeVideo::$regex, $url, $matches)) {
             return new YoutubeVideo($matches[5]);
         }
 
-        if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\#?)(?:[?]?.*)$%im', $url, $matches)) {
+        if (preg_match(VimeoVideo::$regex, $url, $matches)) {
             return new VimeoVideo($matches[3]);
         }
 

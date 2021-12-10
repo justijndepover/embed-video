@@ -31,6 +31,50 @@ class EmbedVideoTest extends TestCase
     }
 
     /** @test */
+    public function it_can_validate_a_youtube_link()
+    {
+        $validated = Video::validateYoutube('random_string');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateYoutube('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validateYoutube('https://www.youtube.com/embed/dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validateYoutube('https://youtu.be/dQw4w9WgXcQ');
+        $this->assertTrue($validated);
+
+        $validated = Video::validateYoutube('https://vimeo.com/452638847');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateYoutube('https://player.vimeo.com/video/452638847');
+        $this->assertFalse($validated);
+    }
+
+    /** @test */
+    public function it_can_validate_a_vimeo_link()
+    {
+        $validated = Video::validateVimeo('random_string');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateVimeo('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateVimeo('https://www.youtube.com/embed/dQw4w9WgXcQ');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateVimeo('https://youtu.be/dQw4w9WgXcQ');
+        $this->assertFalse($validated);
+
+        $validated = Video::validateVimeo('https://vimeo.com/452638847');
+        $this->assertTrue($validated);
+
+        $validated = Video::validateVimeo('https://player.vimeo.com/video/452638847');
+        $this->assertTrue($validated);
+    }
+
+    /** @test */
     public function it_throws_an_error_on_wrong_input_url()
     {
         $this->expectException(VideoException::class);

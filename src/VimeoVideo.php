@@ -7,6 +7,8 @@ use Justijndepover\EmbedVideo\VideoContract;
 
 class VimeoVideo extends Video implements VideoContract
 {
+    public static $regex = '%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\#?)(?:[?]?.*)$%im';
+
     public function embed(): string
     {
         return "<iframe {$this->renderClass()} src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen {$this->getAttributes()}></iframe>";

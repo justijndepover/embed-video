@@ -7,6 +7,8 @@ use Justijndepover\EmbedVideo\VideoContract;
 
 class YoutubeVideo extends Video implements VideoContract
 {
+    public static $regex = '%^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$%im';
+
     public function embed(): string
     {
         return "<iframe {$this->renderClass()} type=\"text/html\" src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}&rel=0\" frameborder=\"0\" {$this->getAttributes()}></iframe>";
