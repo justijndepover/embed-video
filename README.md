@@ -5,6 +5,19 @@
 [![Build Status](https://img.shields.io/github/workflow/status/justijndepover/embed-video/Tests?style=flat-square)](https://github.com/justijndepover/embed-video/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/justijndepover/embed-video.svg?style=flat-square)](https://packagist.org/packages/justijndepover/embed-video)
 
+This package makes it easier to work with both Youtube and Vimeo video url's.
+It automatically detects the reference from the url.
+
+For example:
+```
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+https://youtu.be/dQw4w9WgXcQ
+https://www.youtube.com/embed/dQw4w9WgXcQ
+```
+are all valid youtube links, but to embed an iFrame, you need the third option.
+
+This package allows all the options as input, and is able to generate the correct output urls to embed the iframe.
+
 ## Installation
 
 You can install the package with composer
@@ -39,6 +52,10 @@ $html = $video->embed();
 
 This will generate the embedded iframe for either Youtube or Vimeo.
 
+```
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0"></iframe>
+```
+
 ### Embed url
 
 ```php
@@ -46,6 +63,10 @@ $url = $video->embedUrl();
 ```
 
 This will generate the embedded url used in the iframe for either Youtube or Vimeo.
+
+```
+https://www.youtube.com/embed/dQw4w9WgXcQ
+```
 
 ### Thumbnail
 
@@ -55,6 +76,10 @@ $thumbnail = $video->thumbnail();
 
 This will generate a thumbnail url for the cover image;
 
+```
+http://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg
+```
+
 ### Reference
 
 ```php
@@ -62,6 +87,10 @@ $reference = $video->reference();
 ```
 
 This will return the video reference;
+
+```
+dQw4w9WgXcQ
+```
 
 ### Autoplay
 
@@ -71,12 +100,32 @@ To add autoplay to the embed iframe, you can make use of the fluent syntax:
 $html = $video->autoplay()->embed();
 ```
 
+```
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
+```
+
 ### Class
 
 To add a class to the embed iframe, you can make use of the fluent syntax:
 
 ```php
 $html = $video->class('video-container')->embed();
+```
+
+```
+<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
+```
+
+### Additional attributes
+
+To add additional attributes to the embed iframe, you can make use of the fluent syntax:
+
+```php
+$html = $video->addAttribute('width', 'auto')->embed();
+```
+
+```
+<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0" width="auto"></iframe>
 ```
 
 ## Security
