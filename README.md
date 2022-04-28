@@ -113,7 +113,7 @@ $html = $video->class('video-container')->embed();
 ```
 
 ```html
-<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
+<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0"></iframe>
 ```
 
 ### Additional attributes
@@ -125,7 +125,7 @@ $html = $video->addAttribute('width', 'auto')->embed();
 ```
 
 ```html
-<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0" width="auto"></iframe>
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0" width="auto"></iframe>
 ```
 
 ## Security
