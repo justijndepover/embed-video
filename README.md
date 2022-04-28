@@ -52,7 +52,7 @@ $html = $video->embed();
 
 This will generate the embedded iframe for either Youtube or Vimeo.
 
-```
+```html
 <iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0"></iframe>
 ```
 
@@ -100,7 +100,7 @@ To add autoplay to the embed iframe, you can make use of the fluent syntax:
 $html = $video->autoplay()->embed();
 ```
 
-```
+```html
 <iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
 ```
 
@@ -112,7 +112,7 @@ To add a class to the embed iframe, you can make use of the fluent syntax:
 $html = $video->class('video-container')->embed();
 ```
 
-```
+```html
 <iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
 ```
 
@@ -124,7 +124,7 @@ To add additional attributes to the embed iframe, you can make use of the fluent
 $html = $video->addAttribute('width', 'auto')->embed();
 ```
 
-```
+```html
 <iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0" width="auto"></iframe>
 ```
 
