@@ -10,6 +10,7 @@ abstract class Video
 {
     protected $class;
     protected $autoplay;
+    protected $muted;
     protected $reference;
     protected $attributes = [];
 
@@ -76,6 +77,14 @@ abstract class Video
     public function autoplay()
     {
         $this->autoplay = true;
+        $this->muted = true;
+
+        return $this;
+    }
+
+    public function muted()
+    {
+        $this->muted = true;
 
         return $this;
     }
@@ -113,6 +122,11 @@ abstract class Video
         return $this->autoplay == true ? '1' : '0';
     }
 
+    protected function getMuted(): string
+    {
+        return $this->muted == true ? '1' : '0';
+    }
+
     protected function getAttributes(): string
     {
         $return = '';
@@ -122,5 +136,10 @@ abstract class Video
         }
 
         return rtrim($return);
+    }
+
+    public function embed(): string
+    {
+        return "";
     }
 }

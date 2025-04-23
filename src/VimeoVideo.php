@@ -11,7 +11,7 @@ class VimeoVideo extends Video implements VideoContract
 
     public function embed(): string
     {
-        return "<iframe {$this->renderClass()} src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen {$this->getAttributes()}></iframe>";
+        return "<iframe {$this->renderClass()} src=\"{$this->embedUrl()}?autoplay={$this->getAutoplay()}&muted={$this->getMuted()}\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen {$this->getAttributes()}></iframe>";
     }
 
     public function embedUrl(): string
@@ -34,6 +34,7 @@ class VimeoVideo extends Video implements VideoContract
     public function autoplay(): self
     {
         $this->autoplay = true;
+        $this->muted = true;
         $this->addAttribute('allow', 'autoplay');
 
         return $this;
@@ -42,5 +43,10 @@ class VimeoVideo extends Video implements VideoContract
     protected function getAutoplay(): string
     {
         return $this->autoplay == true ? 'true' : 'false';
+    }
+
+    protected function getMuted(): string
+    {
+        return $this->muted == true ? 'true' : 'false';
     }
 }

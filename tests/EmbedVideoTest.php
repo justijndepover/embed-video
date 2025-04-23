@@ -136,12 +136,20 @@ class EmbedVideoTest extends TestCase
         $iframe = Video::from('https://vimeo.com/452638847')->class('testclass')->embed();
 
         $this->assertStringContainsString('testclass', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->class('testclass')->embed();
+
+        $this->assertStringContainsString('testclass', $iframe);
     }
 
     /** @test */
     public function it_returns_an_iframe()
     {
         $iframe = Video::from('https://vimeo.com/452638847')->embed();
+
+        $this->assertStringContainsString('<iframe', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->embed();
 
         $this->assertStringContainsString('<iframe', $iframe);
     }
@@ -156,5 +164,53 @@ class EmbedVideoTest extends TestCase
         $iframe = Video::from('https://vimeo.com/452638847')->embed();
 
         $this->assertStringContainsString('autoplay=false', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->autoplay()->embed();
+
+        $this->assertStringContainsString('autoplay=1', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->embed();
+
+        $this->assertStringContainsString('autoplay=0', $iframe);
+    }
+
+    /** @test */
+    public function it_does_not_mute_by_default()
+    {
+        $iframe = Video::from('https://vimeo.com/452638847')->embed();
+        $this->assertStringContainsString('muted=false', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->embed();
+        $this->assertStringContainsString('mute=0', $iframe);
+    }
+
+    /** @test */
+    public function it_can_mute_a_video()
+    {
+        $iframe = Video::from('https://vimeo.com/452638847')->muted()->embed();
+        $this->assertStringContainsString('muted=true', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->muted()->embed();
+        $this->assertStringContainsString('mute=1', $iframe);
+    }
+
+    /** @test */
+    public function it_sets_the_correct_mute_on_autoplay()
+    {
+        $iframe = Video::from('https://vimeo.com/452638847')->autoplay()->embed();
+
+        $this->assertStringContainsString('muted=true', $iframe);
+
+        $iframe = Video::from('https://vimeo.com/452638847')->embed();
+
+        $this->assertStringContainsString('muted=false', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->autoplay()->embed();
+
+        $this->assertStringContainsString('mute=1', $iframe);
+
+        $iframe = Video::from('https://www.youtube.com/watch?v=dQw4w9WgXcQ')->embed();
+
+        $this->assertStringContainsString('mute=0', $iframe);
     }
 }
