@@ -92,6 +92,18 @@ This will return the video reference;
 dQw4w9WgXcQ
 ```
 
+### Mute
+
+To add mute to the embed iframe, you can make use of the fluent syntax:
+
+```php
+$html = $video->muted()->embed();
+```
+
+```html
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&rel=0" frameborder="0"></iframe>
+```
+
 ### Autoplay
 
 To add autoplay to the embed iframe, you can make use of the fluent syntax:
@@ -101,8 +113,10 @@ $html = $video->autoplay()->embed();
 ```
 
 ```html
-<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" frameborder="0"></iframe>
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&rel=0" frameborder="0"></iframe>
 ```
+
+note: adding autoplay will automatically mute the video.
 
 ### Class
 
@@ -113,7 +127,7 @@ $html = $video->class('video-container')->embed();
 ```
 
 ```html
-<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0"></iframe>
+<iframe class="video-container" type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=0&rel=0" frameborder="0"></iframe>
 ```
 
 ### Additional attributes
@@ -125,7 +139,7 @@ $html = $video->addAttribute('width', 'auto')->embed();
 ```
 
 ```html
-<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0" frameborder="0" width="auto"></iframe>
+<iframe type="text/html" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=0&rel=0" frameborder="0" width="auto"></iframe>
 ```
 
 ## Security
